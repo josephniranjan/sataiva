@@ -18,7 +18,6 @@ function PrivateRoute ({
       render={props => {
         const user =firebaseApp.auth().currentUser;
         if (user) {
-          console.log("email   :"+user.email);
           return <Component email ={user.email}  {...props} />;
         } else {
           return (

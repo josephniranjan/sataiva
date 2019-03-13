@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {Drawer, Header,Navigation,Content, Layout,Footer,FooterSection,FooterLinkList} from 'react-mdl';
 import DboardRoutes from './DboardRoutes';
 import 'react-mdl/extra/material.css';
@@ -11,6 +10,7 @@ import Contact from './Contact';
 import {firebaseApp} from '../../firebase';
 import { createBrowserHistory } from 'history';
 import About from './About';
+
 const history = createBrowserHistory();
 
 
@@ -61,16 +61,16 @@ class Dashboard extends React.Component{
          <DboardRoutes> </DboardRoutes>
         <div className="demo-big-content">
         <Layout >
-            <Header title="Title" scroll  style ={{backgroundColor : 'rgb(236, 0, 120)'}}>
+            <Header title="Title" scroll  style ={{backgroundColor : '#0d9b8b',color:'black'}}>
                 <Navigation>
                     <div onClick={()=>this.changeCurrentView('Home')}>Home</div>
                     <div onClick={()=>this.changeCurrentView('About')}>About</div>
                     <div onClick={()=>this.changeCurrentView('Product')}>product</div>
                     <div onClick={()=>this.changeCurrentView('Contact')}>contact us</div>    
                 </Navigation>
-                <button type="button" onClick={()=>this.signout()}>sign out</button>
+                <button type="button"  className="btn btn-danger" onClick={()=>this.signout()}>sign out</button>
             </Header>
-            <Drawer title="Title">
+            <Drawer title="Title" style ={{backgroundColor : '#0d9b8b',color:'white'}}>
                 <Navigation>
                     <div onClick={()=>this.changeCurrentView('Home')}>Home</div>
                     <div onClick={()=>this.changeCurrentView('About')}>About</div>

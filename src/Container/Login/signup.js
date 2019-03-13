@@ -1,5 +1,4 @@
 import React, {components} from 'react';
-//import {Link} from 'react-router';
 import { Link } from 'react-router-dom'
 import {firebaseApp} from '../../firebase'
 import './signup.css';
