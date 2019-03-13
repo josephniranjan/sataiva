@@ -1,0 +1,19 @@
+.jumbotron{
+    margin-top : 150px;
+    background-color:#edeff2; 
+}
+
+.form-signin{
+    padding-bottom: 15px;
+}
+.form-label-group{
+    padding: 5px;
+}
+.btn {
+    color:white; 
+    background-color:black; 
+    margin-top:15px;
+}
+.h5{
+    margin-left: 100px;
+}

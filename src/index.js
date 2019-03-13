@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {firebaseApp} from './firebase';
+import Dashboard from './Container/Dashboard/Dashboard';
+import 'react-mdl/extra/material.css';
+import 'react-mdl/extra/material.js';
+
+// firebaseApp.auth().onAuthStateChanged(function(user) {
+//     // if(user.emailVerified) {
+//             console.log('user has been logged in',user);
+//             this.context.history.push('/Dashboard');
+           
+//           // } 
+//           // else{
+//           //   console.log("No user is logged");
+//           // }
+  
+// }); 
+
+
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

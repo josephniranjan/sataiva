@@ -1,26 +1,55 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import signup from './Container/Login/signup'
+import Dashboard from './Container/Dashboard/Dashboard'
+import signin from './Container/Login/signin';
+import {firebaseApp} from './firebase';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
+
+function PrivateRoute ({
+  component: Component,
+  ...rest
+  }){
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        const user =firebaseApp.auth().currentUser;
+        if (user) {
+          console.log("email   :"+user.email);
+          return <Component email ={user.email}  {...props} />;
+        } else {
+          return (
+            <Redirect
+              to={{
+                pathname: "/",
+                state: {
+                  from: props.location
+                }
+              }}
+            />
+          );
+        }
+      }}
+    />
+  );
+};
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <BrowserRouter history={history}>
+          <div>
+            <Route path='/'  exact component ={signup}/>
+            <Route path='/signup'  exact component ={signup}/>
+             <Route path='/signin' component ={signin}/> 
+             <PrivateRoute path="/Dashboard" component={Dashboard} />
+        </div>
+        </BrowserRouter>
+        // <DboardRoutes> </DboardRoutes>
     );
   }
 }
